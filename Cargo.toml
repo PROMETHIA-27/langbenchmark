@@ -1,0 +1,13 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[package]
+name = "langbenchmark"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mlua = { version = "0.9.1", features = ["luajit", "vendored"] }
+rhai = "1.16.2"
+rune = "0.12.4"
+
+[profile.release]
+debug = true

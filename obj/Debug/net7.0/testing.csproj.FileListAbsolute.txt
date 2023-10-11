@@ -1,0 +1,14 @@
+C:\Assets\ProgrammingProjects\Rust\testing\bin\Debug\net7.0\testing.exe
+C:\Assets\ProgrammingProjects\Rust\testing\bin\Debug\net7.0\testing.deps.json
+C:\Assets\ProgrammingProjects\Rust\testing\bin\Debug\net7.0\testing.runtimeconfig.json
+C:\Assets\ProgrammingProjects\Rust\testing\bin\Debug\net7.0\testing.dll
+C:\Assets\ProgrammingProjects\Rust\testing\bin\Debug\net7.0\testing.pdb
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.AssemblyInfoInputs.cache
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.AssemblyInfo.cs
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.csproj.CoreCompileInputs.cache
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.dll
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\refint\testing.dll
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.pdb
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\testing.genruntimeconfig.cache
+C:\Assets\ProgrammingProjects\Rust\testing\obj\Debug\net7.0\ref\testing.dll
