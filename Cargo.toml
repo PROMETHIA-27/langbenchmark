@@ -6,6 +6,7 @@ edition = "2021"
 
 [dependencies]
 mlua = { version = "0.9.1", features = ["luajit", "vendored"] }
+piccolo = { git = "https://github.com/triplehex/piccolo.git" }
 rhai = "1.16.2"
 rune = "0.12.4"
 

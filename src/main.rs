@@ -1,5 +1,4 @@
-#![feature(get_many_mut)]
-
+use std::io::Cursor;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
@@ -26,7 +25,7 @@ fn main() {
 
     let lua = Lua::new();
     let print = lua
-        .create_function(|_: &Lua, s: String| Ok(println!("{s}")))
+        .create_function(|_: &Lua, n: f64| Ok(println!("{n}")))
         .unwrap();
     lua.globals().set("print", print).unwrap();
     let nbody = lua.load(LUASRC);
@@ -63,15 +62,34 @@ fn main() {
     });
     println!("Rust: {}us", len.as_micros());
 
-    // Create scripting engine
     let mut engine = rhai::Engine::new();
 
-    // Evaluate the script, expecting a 'bool' result
     let len = time(|| {
         engine.register_fn("invsqrt", invsqrt);
         let () = engine.eval(RHAISRC).unwrap();
     });
     println!("Rhai: {}us", len.as_micros());
+
+    let mut lua = piccolo::Lua::full();
+    let thread = lua.run(|ctx| {
+        let reader = Cursor::new(LUASRC);
+        let closure = piccolo::Closure::load(ctx, reader).unwrap();
+        let thread = piccolo::Thread::new(&ctx);
+        thread.start(ctx, closure.into(), ()).unwrap();
+        let print = piccolo::AnyCallback::from_fn(&ctx, |_, _, stack| {
+            let piccolo::Value::Number(n) = stack.pop_back() else {
+                panic!()
+            };
+            println!("{n}");
+            Ok(piccolo::CallbackReturn::Return)
+        });
+        ctx.state.globals.set(ctx, "print", print).unwrap();
+        ctx.state.registry.stash(&ctx, thread)
+    });
+    let len = time(|| {
+        let () = lua.run_thread(&thread).unwrap();
+    });
+    println!("Piccolo: {}us", len.as_micros());
 }
 
 fn time(f: impl FnOnce()) -> Duration {
